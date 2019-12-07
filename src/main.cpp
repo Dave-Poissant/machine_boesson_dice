@@ -11,8 +11,10 @@ int16_t gx, gy, gz;  // define gyro as gx,gy,gz
 bool blinkState = false;
 
 void setup() {
+  // put your setup code here, to run once:
+
   Wire.begin();      // join I2C bus
-  Serial.begin(38400);    //  initialize serial communication
+  Serial.begin(9600);    //  initialize serial communication
   Serial.println("Initializing I2C devices...");
   accelgyro.initialize();
 
@@ -21,11 +23,11 @@ void setup() {
   Serial.println(accelgyro.testConnection() ? "MPU6050 connection successful" : "MPU6050 connection failed");
 
   pinMode(LED_PIN, OUTPUT);  // configure LED pin
-  // put your setup code here, to run once:
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
+  delay(50);
   accelgyro.getMotion6(&ax, &ay, &az, &gx, &gy, &gz);  // read measurements from device
 
   // display tab-separated accel/gyro x/y/z values
