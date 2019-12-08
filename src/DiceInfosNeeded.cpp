@@ -13,5 +13,5 @@ DiceInfosNeeded::~DiceInfosNeeded()
 
 void DiceInfosNeeded::getNewSideAlgo(int16_t newAx, int16_t newAy, int16_t newAz)
 {
-
+    
 }

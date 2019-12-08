@@ -23,6 +23,10 @@ private:
     int16_t currentAy;
     int16_t currentAz;
 
+    int16_t errorAx;
+    int16_t errorAy;
+    int16_t errorAz;
+
     int currentDiceSide;
 
 public:
@@ -31,6 +35,7 @@ public:
 
     int getCurrentDiceSide() { return currentDiceSide; };
     void getNewSideAlgo(int16_t newAx, int16_t newAy, int16_t newAz);
+    void setNewSide(DiceSide diceSide) { currentDiceSide = diceSide; };
 };
 
 #endif
