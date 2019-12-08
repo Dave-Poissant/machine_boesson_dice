@@ -9,8 +9,7 @@ int16_t initAx, initAy, initAz; // define initial accel as ...
 int16_t ax, ay, az;  // define accel as ax,ay,az
 int16_t gx, gy, gz;  // define gyro as gx,gy,gz
 
-int16_t onSideValue = 15000;
-
+DiceInfosNeeded currentDice;
 
 #define LED_PIN 13
 bool blinkState = false;
@@ -38,7 +37,7 @@ void setup() {
   accelgyro.initialize();
   delay(50);
   accelgyro.getAcceleration(&initAx, &initAy, &initAz);
-  DiceInfosNeeded currentDice(initAx, initAy, initAz, DiceSide::SideOne);
+  currentDice.setInitialValue(initAx, initAy, initAz, currentDice.wichSide(initAx, initAy, initAz));
 
   Serial.print("First angular position: ");
   Serial.print(initAx);
@@ -62,27 +61,28 @@ void loop() {
   delay(50);
   accelgyro.getMotion6(&ax, &ay, &az, &gx, &gy, &gz);  // read measurements from device
 
-  if(ax >= onSideValue)
+  DiceSide side = currentDice.wichSide(ax, ay, az);
+  if(side == DiceSide::SideFour)
   {
     Serial.println("Side 4");
   }
-  else if(ax <= (-onSideValue))
+  else if(side == DiceSide::SideThree)
   {
     Serial.println("Side 3");
   }
-  else if(ay >= onSideValue)
+  else if(side == DiceSide::SideFive)
   {
     Serial.println("Side 5");
   }
-  else if(ay <= (-onSideValue))
+  else if(side == DiceSide::SideTwo)
   {
     Serial.println("Side 2");
   }
-  else if(az >= onSideValue)
+  else if(side == DiceSide::SideSix)
   {
     Serial.println("Side 6");
   }
-  else if(az <= (-onSideValue))
+  else if(side == DiceSide::SideOne)
   {
     Serial.println("Side 1");
   }
