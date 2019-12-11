@@ -26,10 +26,6 @@ private:
 
     int16_t onSideValue = 15000;
 
-    int16_t errorAx;
-    int16_t errorAy;
-    int16_t errorAz;
-
     int currentDiceSide;
 
 public:
