@@ -116,3 +116,6 @@ void setNewSide()
   lastSide = static_cast<DiceSide>(currentDice.getCurrentDiceSide());
   currentDice.setNewSide(currentDice.wichSide(ax, ay, az));
 }
+
+
+//Test
