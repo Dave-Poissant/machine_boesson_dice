@@ -85,6 +85,7 @@ void loop() {
       //TODO: Add wifi communication HERE babay
       Serial.print("Side ");
       Serial.print(currentDice.getCurrentDiceSide());
+      Wire.write(currentDice.getCurrentDiceSide());  // Envoi le chiffre au Arduino Master
       Serial.println(" send com to CHUGGG!");
     }
     else 
