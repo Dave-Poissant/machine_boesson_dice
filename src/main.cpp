@@ -3,6 +3,12 @@
 #include "Wire.h"
 #include "I2Cdev/I2Cdev.h"
 #include "MPU6050/MPU6050.h"
+#include "nRF24L01.h" //NRF24L01 library created by TMRh20 https://github.com/TMRh20/RF24
+#include "RF24.h"
+#include "SPI.h"
+
+#define SwitchPin 8 // Arcade switch is connected to Pin 8 on NANO
+
 
 MPU6050 accelgyro;
 int16_t initAx, initAy, initAz; // define initial accel as ...
@@ -17,6 +23,7 @@ unsigned long timerStops;
 unsigned int switchingSideTime = 2000;
 
 #define LED_PIN 13
+
 bool blinkState = false;
 bool startTimerReseted = false;
 
@@ -67,6 +74,7 @@ void setup() {
 }
 
 void loop() {
+
   // put your main code here, to run repeatedly:
   delay(50);
   setTimers();
