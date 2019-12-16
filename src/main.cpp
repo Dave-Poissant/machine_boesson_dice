@@ -117,3 +117,7 @@ void setNewSide()
   currentDice.setNewSide(currentDice.wichSide(ax, ay, az));
 }
 
+
+
+//Test
+
